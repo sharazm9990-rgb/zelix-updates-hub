@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zelix Updates Hub – Free Fire</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --purple-dark:#1a0030;--purple-mid:#3d0070;--purple-main:#7b2fff;
+  --purple-light:#c084fc;--purple-glow:#a855f7;--black:#0a000f;
+  --white:#f3e8ff;--gold:#ffd700;--red:#ff3c6e;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Rajdhani',sans-serif;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(ellipse at 20% 30%,#3d007044 0%,transparent 55%),
+  radial-gradient(ellipse at 80% 70%,#7b2fff22 0%,transparent 55%),var(--black);
+  animation:bgPulse 6s ease-in-out infinite alternate}
+@keyframes bgPulse{from{opacity:.8}to{opacity:1}}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* ── NAV ── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:.8rem 2rem;
+  background:rgba(26,0,48,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid #7b2fff55;position:sticky;top:0;z-index:200;
+  animation:slideDown .7s ease;flex-wrap:wrap;gap:.5rem}
+@keyframes slideDown{from{transform:translateY(-60px);opacity:0}}
+.logo{font-family:'Orbitron',monospace;font-size:1.3rem;font-weight:900;
+  background:linear-gradient(90deg,var(--purple-main),var(--purple-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:2px;cursor:pointer}
+.logo span{-webkit-text-fill-color:var(--gold)}
+nav ul{display:flex;gap:1.2rem;list-style:none;flex-wrap:wrap}
+nav ul a{color:var(--white);text-decoration:none;font-weight:600;font-size:.9rem;
+  letter-spacing:1px;position:relative;padding-bottom:4px;transition:color .3s;cursor:pointer}
+nav ul a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;
+  background:var(--purple-main);transition:width .3s}
+nav ul a:hover{color:var(--purple-light)}
+nav ul a:hover::after,nav ul a.active::after{width:100%}
+nav ul a.active{color:var(--purple-light)}
+
+/* ── PAGES ── */
+.page{display:none;animation:pageIn .5s ease}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ── BTNS ── */
+.btn{padding:.8rem 2rem;border-radius:6px;font-family:'Orbitron',monospace;
+  font-size:.8rem;font-weight:700;letter-spacing:1.5px;cursor:pointer;border:none;
+  transition:transform .2s,box-shadow .2s}
+.btn-primary{background:linear-gradient(135deg,var(--purple-main),#a855f7);color:#fff;
+  box-shadow:0 0 20px #7b2fff88}
+.btn-primary:hover{transform:scale(1.06);box-shadow:0 0 35px #a855f7cc}
+.btn-outline{background:transparent;color:var(--purple-light);border:2px solid var(--purple-main)}
+.btn-outline:hover{background:#7b2fff22;transform:scale(1.06)}
+
+/* ── SECTION ── */
+.sec{padding:4rem 2rem;max-width:1200px;margin:0 auto}
+.sec-full{padding:4rem 2rem;max-width:100%}
+.section-title{font-family:'Orbitron',monospace;font-size:1.8rem;font-weight:700;
+  text-align:center;margin-bottom:2.5rem;position:relative}
+.section-title::after{content:'';display:block;width:80px;height:3px;
+  background:linear-gradient(90deg,var(--purple-main),var(--purple-light));
+  margin:.6rem auto 0;border-radius:2px}
+.section-title span{color:var(--purple-light)}
+
+/* ── HERO ── */
+.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:4rem 2rem;position:relative}
+.fire-ring{width:200px;height:200px;border-radius:50%;border:3px solid var(--purple-main);
+  box-shadow:0 0 40px var(--purple-main),inset 0 0 40px #7b2fff44;
+  display:flex;align-items:center;justify-content:center;
+  animation:spin 8s linear infinite,glowPulse 2s ease-in-out infinite alternate;
+  margin-bottom:2rem;position:relative}
+.fire-ring::before{content:'';position:absolute;width:180px;height:180px;border-radius:50%;
+  border:2px dashed var(--purple-glow);animation:spin 4s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes glowPulse{
+  from{box-shadow:0 0 30px var(--purple-main),inset 0 0 30px #7b2fff44}
+  to{box-shadow:0 0 70px var(--purple-light),inset 0 0 60px #a855f766}}
+.ff-icon{font-size:4.5rem}
+.hero h1{font-family:'Orbitron',monospace;font-size:clamp(2rem,6vw,4.2rem);font-weight:900;
+  background:linear-gradient(135deg,#fff 10%,var(--purple-light) 50%,var(--purple-main) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1.1;margin-bottom:1rem;animation:fadeUp .9s .2s both}
+.hero p{font-size:1.1rem;color:#d8b4fe;max-width:600px;line-height:1.6;animation:fadeUp .9s .4s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}}
+.hero-btns{display:flex;gap:1rem;margin-top:2rem;animation:fadeUp .9s .6s both;
+  flex-wrap:wrap;justify-content:center}
+
+/* ── STAT CARDS ── */
+.stats-row{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+.stat-card{background:linear-gradient(145deg,#1e0040,#0f001a);border:1px solid #7b2fff66;
+  border-radius:12px;padding:1.5rem 2rem;text-align:center;min-width:130px;
+  animation:fadeUp .8s both;transition:transform .3s,box-shadow .3s}
+.stat-card:hover{transform:translateY(-5px);box-shadow:0 6px 30px #7b2fff44}
+.stat-card .num{font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:var(--gold)}
+.stat-card .label{font-size:.85rem;color:var(--purple-light);margin-top:.3rem}
+
+/* ── 3D CHARACTER MODELS ── */
+.char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2rem}
+.char-model{perspective:800px;cursor:pointer}
+.char-card-3d{width:100%;background:linear-gradient(145deg,#1e0040,#0a0018);
+  border:1px solid #7b2fff55;border-radius:16px;padding:1.5rem 1rem;text-align:center;
+  transform-style:preserve-3d;transition:transform .6s,box-shadow .4s;
+  position:relative;overflow:hidden}
+.char-model:hover .char-card-3d{transform:rotateY(15deg) rotateX(-5deg) scale(1.05);
+  box-shadow:0 20px 60px #7b2fff66}
+.char-card-3d::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 40%,#a855f715 100%);pointer-events:none}
+.char-avatar{width:110px;height:110px;margin:0 auto 1rem;border-radius:50%;
+  background:linear-gradient(135deg,#3d0070,#7b2fff);
+  display:flex;align-items:center;justify-content:center;font-size:3.5rem;
+  box-shadow:0 0 30px #7b2fff88;
+  animation:floatChar 3s ease-in-out infinite alternate;
+  border:2px solid var(--purple-glow)}
+@keyframes floatChar{from{transform:translateY(0)}to{transform:translateY(-8px)}}
+.char-name{font-family:'Orbitron',monospace;font-size:.95rem;color:var(--purple-light);
+  margin-bottom:.4rem;font-weight:700}
+.char-ability{font-size:.8rem;color:#c4b5d4;margin-bottom:.8rem;line-height:1.4}
+.char-tier{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.7rem;
+  font-weight:700;letter-spacing:1px}
+.tier-s{background:#ffd70033;color:var(--gold);border:1px solid #ffd70066}
+.tier-a{background:#7b2fff33;color:var(--purple-light);border:1px solid #7b2fff66}
+.char-stats-bar{margin-top:.8rem;text-align:left}
+.bar-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;font-size:.7rem;color:#9b80b0}
+.mini-bar{flex:1;height:5px;background:#2a0050;border-radius:3px;overflow:hidden}
+.mini-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple-main),var(--purple-light));
+  transition:width 1s .5s}
+
+/* ── WEAPONS PAGE ── */
+.weapon-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.weapon-card{background:linear-gradient(145deg,#1a0035,#0a0015);border:1px solid #7b2fff44;
+  border-radius:12px;padding:1.5rem;transition:transform .3s,box-shadow .3s;
+  animation:fadeUp .7s both}
+.weapon-card:hover{transform:translateY(-6px);box-shadow:0 10px 40px #7b2fff55;border-color:var(--purple-main)}
+.weapon-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.weapon-emoji{font-size:2.5rem;
+  filter:drop-shadow(0 0 10px #7b2fff)}
+.weapon-name{font-family:'Orbitron',monospace;font-size:1.1rem;color:var(--purple-light)}
+.weapon-type{font-size:.75rem;color:#9b80b0;margin-top:.2rem}
+.stat-row{display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:.5rem;font-size:.85rem}
+.stat-label{color:#9b80b0}
+.stat-val{color:var(--white);font-weight:700}
+.stat-bar-bg{width:100%;height:6px;background:#2a0050;border-radius:3px;margin-top:.2rem;overflow:hidden}
+.stat-bar-fill{height:100%;border-radius:3px;
+  background:linear-gradient(90deg,var(--purple-main),var(--purple-light));transition:width 1s}
+.weapon-badge{display:inline-block;margin-top:.8rem;padding:.2rem .6rem;border-radius:4px;
+  font-size:.7rem;font-weight:700;background:var(--purple-main);color:#fff}
+
+/* ── DIAMOND TIPS ── */
+.diamond-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+.diamond-card{background:linear-gradient(145deg,#0d001f,#1a0030);border:1px solid #ffd70044;
+  border-radius:12px;padding:1.5rem;animation:fadeUp .7s both;
+  transition:transform .3s,box-shadow .3s}
+.diamond-card:hover{transform:translateY(-6px);box-shadow:0 8px 35px #ffd70022;border-color:var(--gold)}
+.diamond-icon{font-size:2.5rem;margin-bottom:.8rem}
+.diamond-card h3{font-family:'Orbitron',monospace;font-size:.95rem;color:var(--gold);margin-bottom:.5rem}
+.diamond-card p{font-size:.88rem;color:#c4b5d4;line-height:1.5}
+.free-badge{display:inline-block;margin-top:.8rem;padding:.2rem .6rem;border-radius:4px;
+  font-size:.7rem;font-weight:700;background:#ffd70033;color:var(--gold);border:1px solid #ffd70066}
+
+/* ── NEWS PAGE ── */
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.news-card{background:#100020;border:1px solid #7b2fff44;border-radius:10px;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;animation:fadeUp .7s both}
+.news-card:hover{transform:translateY(-6px);box-shadow:0 6px 30px #7b2fff44}
+.news-banner{height:110px;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;background:linear-gradient(135deg,#1e0040,#3d0070)}
+.news-body{padding:1.2rem}
+.badge{font-size:.7rem;font-weight:700;letter-spacing:1px;padding:.2rem .6rem;
+  border-radius:4px;background:var(--purple-main);color:#fff;text-transform:uppercase}
+.badge-hot{background:var(--red)}
+.badge-new{background:#00c896}
+.news-body h3{margin:.6rem 0 .4rem;font-size:1rem;color:var(--white)}
+.news-body p{font-size:.85rem;color:#b8a0cc;line-height:1.4}
+.news-date{font-size:.75rem;color:#7b6b8a;margin-top:.5rem}
+
+/* ── SOCIAL PAGE ── */
+.social-hero{text-align:center;padding:3rem 2rem;max-width:800px;margin:0 auto}
+.social-platforms{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}
+.platform-card{background:linear-gradient(145deg,#1a0030,#0f001a);
+  border-radius:16px;padding:2rem 1.5rem;text-align:center;min-width:220px;
+  transition:transform .3s,box-shadow .3s;animation:fadeUp .8s both;
+  border:1px solid #7b2fff44;cursor:pointer;text-decoration:none;display:block}
+.platform-card:hover{transform:translateY(-8px) scale(1.04)}
+.platform-card.yt:hover{box-shadow:0 10px 40px #ff000044;border-color:#ff0000}
+.platform-card.tt:hover{box-shadow:0 10px 40px #00f2ea44;border-color:#00f2ea}
+.platform-icon{font-size:4rem;margin-bottom:1rem;display:block}
+.platform-name{font-family:'Orbitron',monospace;font-size:1.1rem;margin-bottom:.3rem}
+.platform-handle{color:var(--purple-light);font-size:.95rem;margin-bottom:.8rem}
+.platform-desc{font-size:.85rem;color:#c4b5d4;line-height:1.4}
+.yt .platform-name{color:#ff4444}
+.tt .platform-name{color:#00f2ea}
+
+.viral-section{max-width:1100px;margin:0 auto;padding:0 2rem 4rem}
+.viral-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem}
+.viral-card{background:linear-gradient(145deg,#1a0030,#0a0018);border:1px solid #7b2fff44;
+  border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;
+  animation:fadeUp .7s both;cursor:pointer}
+.viral-card:hover{transform:translateY(-6px);box-shadow:0 8px 35px #7b2fff55;border-color:var(--purple-main)}
+.viral-thumb{height:140px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#2d0060,#1a0030);font-size:3rem;position:relative}
+.play-btn{position:absolute;width:50px;height:50px;border-radius:50%;
+  background:rgba(123,47,255,.8);display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;transition:transform .2s,background .2s}
+.viral-card:hover .play-btn{transform:scale(1.2);background:var(--purple-main)}
+.viral-info{padding:1rem}
+.viral-info h4{font-size:.95rem;margin-bottom:.3rem;color:var(--white)}
+.viral-info .views{font-size:.8rem;color:#9b80b0}
+.viral-platform{font-size:.7rem;padding:.15rem .5rem;border-radius:3px;font-weight:700;margin-top:.5rem;display:inline-block}
+.vp-yt{background:#ff000033;color:#ff4444;border:1px solid #ff000055}
+.vp-tt{background:#00f2ea22;color:#00f2ea;border:1px solid #00f2ea44}
+
+/* ── CONTACT ── */
+.contact-box{background:linear-gradient(135deg,#1a0030,#2d0055);border:1px solid var(--purple-main);
+  border-radius:16px;padding:3rem 2rem;text-align:center;max-width:600px;margin:0 auto;
+  box-shadow:0 0 60px #7b2fff44;animation:fadeUp .8s both}
+.contact-box h2{font-family:'Orbitron',monospace;font-size:1.6rem;margin-bottom:1rem;color:var(--purple-light)}
+.phone-display{display:inline-flex;align-items:center;gap:.8rem;background:#0a000f;
+  border:2px solid var(--purple-main);border-radius:10px;padding:1rem 2rem;margin:1.5rem 0;
+  font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:700;color:var(--gold);
+  box-shadow:0 0 25px #7b2fff66;animation:glowPulse 2s ease-in-out infinite alternate}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:2rem;border-top:1px solid #7b2fff33;
+  color:#7b6b8a;font-size:.85rem;background:#0a000f}
+footer span{color:var(--purple-light)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── FAB ── */
+.fab{position:fixed;bottom:2rem;right:2rem;background:linear-gradient(135deg,var(--purple-main),#a855f7);
+  color:#fff;border:none;width:52px;height:52px;border-radius:50%;font-size:1.3rem;
+  cursor:pointer;z-index:300;box-shadow:0 0 25px #7b2fff99;
+  transition:transform .2s;display:flex;align-items:center;justify-content:center}
+.fab:hover{transform:scale(1.15)}
+
+/* ── MOBILE ── */
+@media(max-width:640px){
+  nav ul{gap:.7rem}
+  nav ul a{font-size:.8rem}
+  .hero h1{font-size:1.8rem}
+  .char-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="logo" onclick="showPage('home')">ZELIX <span>⚡</span> HUB</div>
+  <ul>
+    <li><a onclick="showPage('home')" id="nav-home" class="active">🏠 Home</a></li>
+    <li><a onclick="showPage('characters')" id="nav-characters">🦾 Characters</a></li>
+    <li><a onclick="showPage('weapons')" id="nav-weapons">🔫 Weapons</a></li>
+    <li><a onclick="showPage('diamonds')" id="nav-diamonds">💎 Diamonds</a></li>
+    <li><a onclick="showPage('news')" id="nav-news">📢 News</a></li>
+    <li><a onclick="showPage('social')" id="nav-social">📱 Social</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════
+     PAGE: HOME
+════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="fire-ring"><span class="ff-icon">🔥</span></div>
+    <h1>ZELIX UPDATES HUB</h1>
+    <p>Free Fire ki sari latest updates, characters, weapons, aur pro tips — sab ek jagah! Pakistan ka sabse best FF info hub.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" onclick="showPage('news')">Latest Updates 📢</button>
+      <button class="btn btn-outline" onclick="showPage('characters')">Characters 🦾</button>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="stats-row">
+      <div class="stat-card reveal"><div class="num">50+</div><div class="label">Characters</div></div>
+      <div class="stat-card reveal" style="transition-delay:.1s"><div class="num">30+</div><div class="label">Weapons</div></div>
+      <div class="stat-card reveal" style="transition-delay:.2s"><div class="num">10+</div><div class="label">Maps</div></div>
+      <div class="stat-card reveal" style="transition-delay:.3s"><div class="num">500M+</div><div class="label">Players</div></div>
+    </div>
+
+    <h2 class="section-title"><span>🏆</span> Quick Access</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem">
+      <div class="weapon-card reveal" style="cursor:pointer" onclick="showPage('characters')">
+        <div style="font-size:2.5rem;text-align:center;margin-bottom:.8rem">🦾</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:.95rem;color:var(--purple-light);text-align:center">3D Characters</h3>
+        <p style="font-size:.85rem;color:#c4b5d4;text-align:center;margin-top:.4rem">Animated character models dekho</p>
+      </div>
+      <div class="weapon-card reveal" style="cursor:pointer;transition-delay:.1s" onclick="showPage('weapons')">
+        <div style="font-size:2.5rem;text-align:center;margin-bottom:.8rem">🔫</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:.95rem;color:var(--purple-light);text-align:center">Weapons Guide</h3>
+        <p style="font-size:.85rem;color:#c4b5d4;text-align:center;margin-top:.4rem">Har weapon ki detail stats</p>
+      </div>
+      <div class="weapon-card reveal" style="cursor:pointer;transition-delay:.2s" onclick="showPage('diamonds')">
+        <div style="font-size:2.5rem;text-align:center;margin-bottom:.8rem">💎</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:.95rem;color:var(--purple-light);text-align:center">Free Diamonds</h3>
+        <p style="font-size:.85rem;color:#c4b5d4;text-align:center;margin-top:.4rem">Free diamond tips aur tricks</p>
+      </div>
+      <div class="weapon-card reveal" style="cursor:pointer;transition-delay:.3s" onclick="showPage('social')">
+        <div style="font-size:2.5rem;text-align:center;margin-bottom:.8rem">📱</div>
+        <h3 style="font-family:'Orbitron',monospace;font-size:.95rem;color:var(--purple-light);text-align:center">Social Media</h3>
+        <p style="font-size:.85rem;color:#c4b5d4;text-align:center;margin-top:.4rem">YouTube & TikTok viral videos</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0d0018;padding:3rem 2rem;margin-top:2rem">
+    <div class="sec" style="padding:0">
+      <div class="contact-box reveal">
+        <h2>📞 Contact Karo</h2>
+        <p>Koi bhi sawaal? Seedha message karo!</p>
+        <div class="phone-display">📱 <span>0321-5016315</span></div>
+        <p style="font-size:.9rem;color:#9b7db5;margin-bottom:1rem">WhatsApp ya call — Free Fire ke kisi bhi sawal ka jawab milega!</p>
+        <button class="btn btn-primary" onclick="window.open('https://wa.me/923215016315','_blank')">WhatsApp Par Message Karo 💬</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 <span>Zelix Updates Hub</span> — Pakistan ka #1 Free Fire Info Platform</p>
+    <p style="margin-top:.4rem">Made with 💜 | YouTube: <span>@zelixtt</span> | TikTok: <span>@zelixff2</span></p>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: CHARACTERS (3D MODELS)
+════════════════════════════════════════ -->
+<div id="page-characters" class="page">
+  <div class="sec">
+    <h2 class="section-title"><span>🦾</span> 3D Character Models</h2>
+    <p style="text-align:center;color:#c4b5d4;margin-bottom:2.5rem;font-size:1rem">Card pe hover karo 3D effect dekhne ke liye! 👇</p>
+    <div class="char-grid">
+
+      <div class="char-model reveal" style="transition-delay:.05s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:0s">🦾</div>
+          <div class="char-name">DJ Alok</div>
+          <div class="char-ability">Drop the Beat — heal + speed boost nearby players</div>
+          <span class="char-tier tier-s">S-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Power</span><div class="mini-bar"><div class="mini-fill" style="width:95%"></div></div><span>95</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:80%"></div></div><span>80</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:90%"></div></div><span>90</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.1s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:.5s">⚡</div>
+          <div class="char-name">K (Captain Booyah)</div>
+          <div class="char-ability">Jiu-jitsu + Psychology mode — EP restore master</div>
+          <span class="char-tier tier-s">S-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Power</span><div class="mini-bar"><div class="mini-fill" style="width:88%"></div></div><span>88</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:70%"></div></div><span>70</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:95%"></div></div><span>95</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.15s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:1s">🏹</div>
+          <div class="char-name">Chrono</div>
+          <div class="char-ability">Time Turner — force field jo bullets rok le</div>
+          <span class="char-tier tier-s">S-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Defense</span><div class="mini-bar"><div class="mini-fill" style="width:92%"></div></div><span>92</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:85%"></div></div><span>85</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:88%"></div></div><span>88</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.2s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:1.5s">🦅</div>
+          <div class="char-name">Jai</div>
+          <div class="char-ability">Raging Reload — kill baad auto gun reload</div>
+          <span class="char-tier tier-a">A-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Aggro</span><div class="mini-bar"><div class="mini-fill" style="width:90%"></div></div><span>90</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:75%"></div></div><span>75</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:72%"></div></div><span>72</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.25s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:2s">🌪️</div>
+          <div class="char-name">Skyler</div>
+          <div class="char-ability">Riptide Rhythm — gloo walls destroy karo sonic se</div>
+          <span class="char-tier tier-a">A-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Counter</span><div class="mini-bar"><div class="mini-fill" style="width:85%"></div></div><span>85</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:78%"></div></div><span>78</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:80%"></div></div><span>80</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.3s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:2.5s">🕵️</div>
+          <div class="char-name">Moco</div>
+          <div class="char-ability">Hacker's Eye — hit ke baad enemy location reveal</div>
+          <span class="char-tier tier-a">A-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Intel</span><div class="mini-bar"><div class="mini-fill" style="width:95%"></div></div><span>95</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:65%"></div></div><span>65</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:85%"></div></div><span>85</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.35s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:3s">🧠</div>
+          <div class="char-name">Wukong</div>
+          <div class="char-ability">Camouflage — bush mein chhup jaata hai enemy ke saamne</div>
+          <span class="char-tier tier-a">A-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>Stealth</span><div class="mini-bar"><div class="mini-fill" style="width:90%"></div></div><span>90</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:72%"></div></div><span>72</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:78%"></div></div><span>78</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="char-model reveal" style="transition-delay:.4s">
+        <div class="char-card-3d">
+          <div class="char-avatar" style="animation-delay:3.5s">💥</div>
+          <div class="char-name">Antonio</div>
+          <div class="char-ability">Gangster's Spirit — extra HP ke saath game start karo</div>
+          <span class="char-tier tier-a">A-TIER</span>
+          <div class="char-stats-bar">
+            <div class="bar-row"><span>HP Bonus</span><div class="mini-bar"><div class="mini-fill" style="width:88%"></div></div><span>88</span></div>
+            <div class="bar-row"><span>Speed</span><div class="mini-bar"><div class="mini-fill" style="width:70%"></div></div><span>70</span></div>
+            <div class="bar-row"><span>Utility</span><div class="mini-bar"><div class="mini-fill" style="width:65%"></div></div><span>65</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer><p>© 2024 <span>Zelix Updates Hub</span> | <span>@zelixtt</span> | <span>@zelixff2</span></p></footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: WEAPONS
+════════════════════════════════════════ -->
+<div id="page-weapons" class="page">
+  <div class="sec">
+    <h2 class="section-title"><span>🔫</span> Weapons Guide</h2>
+    <div class="weapon-cards">
+
+      <div class="weapon-card reveal" style="transition-delay:.05s">
+        <div class="weapon-header">
+          <span class="weapon-emoji">🔫</span>
+          <div><div class="weapon-name">M1014</div><div class="weapon-type">Shotgun • Close Range</div></div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Damage</span><span class="stat-val">96</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:96%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Fire Rate</span><span class="stat-val">60</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:60%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Range</span><span class="stat-val">25</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:25%"></div></div>
+        <span class="weapon-badge">Rush Killer</span>
+      </div>
+
+      <div class="weapon-card reveal" style="transition-delay:.1s">
+        <div class="weapon-header">
+          <span class="weapon-emoji">🎯</span>
+          <div><div class="weapon-name">M82B</div><div class="weapon-type">Sniper • Long Range</div></div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Damage</span><span class="stat-val">90</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:90%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Fire Rate</span><span class="stat-val">20</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:20%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Range</span><span class="stat-val">98</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:98%"></div></div>
+        <span class="weapon-badge">Vehicle Destroyer</span>
+      </div>
+
+      <div class="weapon-card reveal" style="transition-delay:.15s">
+        <div class="weapon-header">
+          <span class="weapon-emoji">⚡</span>
+          <div><div class="weapon-name">Groza</div><div class="weapon-type">Assault Rifle • Airdrop</div></div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Damage</span><span class="stat-val">80</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:80%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Fire Rate</span><span class="stat-val">78</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:78%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Range</span><span class="stat-val">70</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:70%"></div></div>
+        <span class="weapon-badge">Airdrop Only</span>
+      </div>
+
+      <div class="weapon-card reveal" style="transition-delay:.2s">
+        <div class="weapon-header">
+          <span class="weapon-emoji">🔥</span>
+          <div><div class="weapon-name">AK</div><div class="weapon-type">Assault Rifle • All Range</div></div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Damage</span><span class="stat-val">78</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:78%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Fire Rate</span><span class="stat-val">55</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:55%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Range</span><span class="stat-val">75</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:75%"></div></div>
+        <span class="weapon-badge">All Rounder</span>
+      </div>
+
+      <div class="weapon-card reveal" style="transition-delay:.25s">
+        <div class="weapon-header">
+          <span class="weapon-emoji">💨</span>
+          <div><div class="weapon-name">MP40</div><div class="weapon-type">SMG • Fast Fire</div></div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Damage</span><span class="stat-val">48</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:48%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Fire Rate</span><span class="stat-val">92</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:92%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Range</span><span class="stat-val">35</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:35%"></div></div>
+        <span class="weapon-badge">Close Combat</span>
+      </div>
+
+      <div class="weapon-card reveal" style="transition-delay:.3s">
+        <div class="weapon-header">
+          <span class="weapon-emoji">🏹</span>
+          <div><div class="weapon-name">SVD</div><div class="weapon-type">Sniper • Semi-Auto</div></div>
+        </div>
+        <div class="stat-row"><span class="stat-label">Damage</span><span class="stat-val">84</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:84%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Fire Rate</span><span class="stat-val">40</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:40%"></div></div>
+        <div class="stat-row" style="margin-top:.5rem"><span class="stat-label">Range</span><span class="stat-val">88%</span></div>
+        <div class="stat-bar-bg"><div class="stat-bar-fill" style="width:88%"></div></div>
+        <span class="weapon-badge">Semi-Auto Sniper</span>
+      </div>
+
+    </div>
+  </div>
+  <footer><p>© 2024 <span>Zelix Updates Hub</span> | <span>@zelixtt</span> | <span>@zelixff2</span></p></footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: DIAMOND TIPS
+════════════════════════════════════════ -->
+<div id="page-diamonds" class="page">
+  <div class="sec">
+    <h2 class="section-title"><span>💎</span> Free Diamond Tips</h2>
+    <p style="text-align:center;color:#c4b5d4;margin-bottom:2.5rem">Yeh legitimate tareeqe hain — koi hack nahi, 100% safe methods!</p>
+    <div class="diamond-grid">
+
+      <div class="diamond-card reveal" style="transition-delay:.05s">
+        <div class="diamond-icon">📋</div>
+        <h3>Daily Login Reward</h3>
+        <p>Har din Free Fire open karo aur daily login reward zaroor lo. 7 din consecutive login pe bonus diamonds milte hain!</p>
+        <span class="free-badge">FREE ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.1s">
+        <div class="diamond-icon">🎯</div>
+        <h3>Mission Peti Complete Karo</h3>
+        <p>Daily aur weekly missions complete karo. Mission Peti mein 100–500 diamonds tak mil sakte hain har hafte!</p>
+        <span class="free-badge">FREE ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.15s">
+        <div class="diamond-icon">🏆</div>
+        <h3>Ranked Mode Rewards</h3>
+        <p>Ranked season end pe aapki rank ke hisaab se diamonds milte hain. Heroic tak pohoncho aur 2000+ diamonds kamao!</p>
+        <span class="free-badge">FREE ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.2s">
+        <div class="diamond-icon">👥</div>
+        <h3>Refer a Friend</h3>
+        <p>Dost ko Free Fire mein invite karo. Har successful referral pe dono ko diamonds milte hain — dosto ke saath jeetoh!</p>
+        <span class="free-badge">FREE ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.25s">
+        <div class="diamond-icon">📺</div>
+        <h3>Watch Events & Streams</h3>
+        <p>Official FF events aur esports streams dekho. Drop rewards mein diamonds aur exclusive items milte hain!</p>
+        <span class="free-badge">FREE ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.3s">
+        <div class="diamond-icon">🎁</div>
+        <h3>Special Events Participate Karo</h3>
+        <p>FF mein har hafte naye events aate hain. Fafazine, Anniversary, aur festival events mein free diamonds milte hain!</p>
+        <span class="free-badge">FREE ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.35s">
+        <div class="diamond-icon">⚙️</div>
+        <h3>Google Opinion Rewards</h3>
+        <p>Google Opinion Rewards app download karo. Surveys complete karo aur Google Play credits se diamonds kharido!</p>
+        <span class="free-badge">Indirect ✓</span>
+      </div>
+
+      <div class="diamond-card reveal" style="transition-delay:.4s">
+        <div class="diamond-icon">🎮</div>
+        <h3>Club Membership Benefits</h3>
+        <p>FF Club join karo — monthly membership se diamonds aur exclusive rewards milte hain jo normal se zyada value dete hain!</p>
+        <span class="free-badge">Paid Plan</span>
+      </div>
+
+    </div>
+
+    <div style="background:#1a0030;border:1px solid #ff3c6e55;border-radius:12px;padding:1.5rem;margin-top:2rem;text-align:center">
+      <p style="color:#ff7a9a;font-size:.95rem">⚠️ <strong>Warning:</strong> Koi bhi "Free Diamond Hack" ya third-party app use mat karo — yeh aapka account ban karwa sakta hai aur unsafe bhi hota hai!</p>
+    </div>
+  </div>
+  <footer><p>© 2024 <span>Zelix Updates Hub</span> | <span>@zelixtt</span> | <span>@zelixff2</span></p></footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: NEWS & UPDATES
+════════════════════════════════════════ -->
+<div id="page-news" class="page">
+  <div class="sec">
+    <h2 class="section-title"><span>📢</span> Latest News & Updates</h2>
+    <div class="news-grid">
+
+      <div class="news-card reveal" style="transition-delay:.05s">
+        <div class="news-banner">🎭</div>
+        <div class="news-body">
+          <span class="badge badge-new">New</span>
+          <h3>New Character: Sonia</h3>
+          <p>Second Wind ability — low HP pe damage reduction. Defensive players ke liye best pick!</p>
+          <div class="news-date">📅 Latest Update</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.1s">
+        <div class="news-banner">🗺️</div>
+        <div class="news-body">
+          <span class="badge badge-hot">Hot</span>
+          <h3>New Map: Nexterra</h3>
+          <p>Futuristic city map — naye locations aur loot zones ke saath urban combat ka maza!</p>
+          <div class="news-date">📅 Season Update</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.15s">
+        <div class="news-banner">🏆</div>
+        <div class="news-body">
+          <span class="badge">Event</span>
+          <h3>Ranked Season Reset</h3>
+          <p>New season shuru! Heroic/Grandmaster tak pohoncho exclusive rewards ke liye. Grind time!</p>
+          <div class="news-date">📅 Season Start</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.2s">
+        <div class="news-banner">🔫</div>
+        <div class="news-body">
+          <span class="badge">Patch</span>
+          <h3>Weapon Balance Update</h3>
+          <p>M1014 nerf, AK aur Groza ko buff mila. Meta shift — naya loadout try karo!</p>
+          <div class="news-date">📅 Balance Patch</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.25s">
+        <div class="news-banner">💎</div>
+        <div class="news-body">
+          <span class="badge badge-new">Free</span>
+          <h3>Free Diamond Events</h3>
+          <p>Limited time events mein free diamonds — daily missions complete karo aur rewards lo!</p>
+          <div class="news-date">📅 Limited Time</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.3s">
+        <div class="news-banner">⚔️</div>
+        <div class="news-body">
+          <span class="badge badge-hot">Collab</span>
+          <h3>New Celebrity Collaboration</h3>
+          <p>Limited edition bundles aur exclusive skins — collector items abhi lo!</p>
+          <div class="news-date">📅 Collaboration</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.35s">
+        <div class="news-banner">🎪</div>
+        <div class="news-body">
+          <span class="badge">Mode</span>
+          <h3>New Game Mode: Squad Siege</h3>
+          <p>4v4 objective-based mode — team coordination aur strategy use karke jeeto!</p>
+          <div class="news-date">📅 New Mode</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.4s">
+        <div class="news-banner">🛡️</div>
+        <div class="news-body">
+          <span class="badge">System</span>
+          <h3>Anti-Cheat Update</h3>
+          <p>Garena ne anti-cheat system improve kiya — fair play guarantee ke liye massive update!</p>
+          <div class="news-date">📅 Security Update</div>
+        </div>
+      </div>
+
+      <div class="news-card reveal" style="transition-delay:.45s">
+        <div class="news-banner">🎵</div>
+        <div class="news-body">
+          <span class="badge badge-new">Music</span>
+          <h3>New Lobby Soundtrack</h3>
+          <p>New season ke saath naya epic lobby music — game feel bilkul alag ho gaya hai!</p>
+          <div class="news-date">📅 Latest</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <footer><p>© 2024 <span>Zelix Updates Hub</span> | <span>@zelixtt</span> | <span>@zelixff2</span></p></footer>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE: SOCIAL MEDIA
+════════════════════════════════════════ -->
+<div id="page-social" class="page">
+  <div class="social-hero">
+    <h2 class="section-title"><span>📱</span> Social Media</h2>
+    <p style="color:#c4b5d4;font-size:1rem">Zelix ke social media pe follow karo aur viral FF content dekhte raho! 🔥</p>
+    <div class="social-platforms">
+      <a class="platform-card yt reveal" href="https://www.youtube.com/@zelixtt" target="_blank" style="transition-delay:.1s">
+        <span class="platform-icon">▶️</span>
+        <div class="platform-name">YouTube</div>
+        <div class="platform-handle">@zelixtt</div>
+        <div class="platform-desc">Free Fire gameplay, tips, tricks aur latest updates ke videos</div>
+        <div style="margin-top:1rem">
+          <span class="btn btn-outline" style="font-size:.75rem;padding:.6rem 1.2rem">Channel Visit Karo →</span>
+        </div>
+      </a>
+      <a class="platform-card tt reveal" href="https://www.tiktok.com/@zelixff2" target="_blank" style="transition-delay:.2s">
+        <span class="platform-icon">🎵</span>
+        <div class="platform-name">TikTok</div>
+        <div class="platform-handle">@zelixff2</div>
+        <div class="platform-desc">Short viral FF clips, montages aur funny moments</div>
+        <div style="margin-top:1rem">
+          <span class="btn btn-outline" style="font-size:.75rem;padding:.6rem 1.2rem">TikTok Follow Karo →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="viral-section">
+    <h2 class="section-title"><span>🔥</span> Viral Videos</h2>
+    <div class="viral-grid">
+
+      <div class="viral-card reveal" style="transition-delay:.05s" onclick="window.open('https://www.youtube.com/@zelixtt','_blank')">
+        <div class="viral-thumb">
+          <span>🎯</span>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="viral-info">
+          <h4>Pro Player Ka Secret Loadout Reveal!</h4>
+          <div class="views">🔥 Trending • Zelix</div>
+          <span class="viral-platform vp-yt">YouTube</span>
+        </div>
+      </div>
+
+      <div class="viral-card reveal" style="transition-delay:.1s" onclick="window.open('https://www.tiktok.com/@zelixff2','_blank')">
+        <div class="viral-thumb">
+          <span>💥</span>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="viral-info">
+          <h4>Solo vs Squad Booyah — Insane Clutch!</h4>
+          <div class="views">⚡ Viral Clip • Zelix</div>
+          <span class="viral-platform vp-tt">TikTok</span>
+        </div>
+      </div>
+
+      <div class="viral-card reveal" style="transition-delay:.15s" onclick="window.open('https://www.youtube.com/@zelixtt','_blank')">
+        <div class="viral-thumb">
+          <span>🏆</span>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="viral-info">
+          <h4>Ranked Grandmaster Push — Full Journey</h4>
+          <div class="views">📈 Most Watched • Zelix</div>
+          <span class="viral-platform vp-yt">YouTube</span>
+        </div>
+      </div>
+
+      <div class="viral-card reveal" style="transition-delay:.2s" onclick="window.open('https://www.tiktok.com/@zelixff2','_blank')">
+        <div class="viral-thumb">
+          <span>🎭</span>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="viral-info">
+          <h4>New Character Sonia — Ability Test!</h4>
+          <div class="views">🆕 New Upload • Zelix</div>
+          <span class="viral-platform vp-tt">TikTok</span>
+        </div>
+      </div>
+
+      <div class="viral-card reveal" style="transition-delay:.25s" onclick="window.open('https://www.youtube.com/@zelixtt','_blank')">
+        <div class="viral-thumb">
+          <span>💎</span>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="viral-info">
+          <h4>Free Diamonds Kaise Milte Hain — Guide</h4>
+          <div class="views">💰 Popular • Zelix</div>
+          <span class="viral-platform vp-yt">YouTube</span>
+        </div>
+      </div>
+
+      <div class="viral-card reveal" style="transition-delay:.3s" onclick="window.open('https://www.tiktok.com/@zelixff2','_blank')">
+        <div class="viral-thumb">
+          <span>🌪️</span>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="viral-info">
+          <h4>Zelix ka Best 1v4 Clutch Moment!</h4>
+          <div class="views">🔥 Going Viral • Zelix</div>
+          <span class="viral-platform vp-tt">TikTok</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
+      <div class="contact-box reveal" style="margin:0 auto">
+        <h2>📞 Contact Karo</h2>
+        <p>Collaboration, info ya koi bhi sawal ke liye!</p>
+        <div class="phone-display">📱 <span>0321-5016315</span></div>
+        <button class="btn btn-primary" onclick="window.open('https://wa.me/923215016315','_blank')">WhatsApp 💬</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 <span>Zelix Updates Hub</span> — Pakistan ka #1 Free Fire Platform</p>
+    <p style="margin-top:.4rem">YouTube: <span>@zelixtt</span> | TikTok: <span>@zelixff2</span> | Contact: <span>0321-5016315</span></p>
+  </footer>
+</div>
+
+<!-- FAB -->
+<button class="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+
+<script>
+// ── PARTICLES ──
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, parts = [];
+function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+resize(); window.addEventListener('resize', resize);
+for(let i=0;i<70;i++) parts.push({x:Math.random()*1920,y:Math.random()*1080,
+  r:Math.random()*2+.5,dx:(Math.random()-.5)*.4,dy:-(Math.random()*.5+.2),alpha:Math.random()*.6+.2});
+function drawP(){
+  ctx.clearRect(0,0,W,H);
+  parts.forEach(p=>{
+    ctx.beginPath(); ctx.arc(p.x%W,p.y%H,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(168,85,247,${p.alpha})`; ctx.fill();
+    p.x+=p.dx; p.y+=p.dy; if(p.y<0) p.y=H;
+  }); requestAnimationFrame(drawP);
+} drawP();
+
+// ── PAGE NAVIGATION ──
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('nav ul a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const navEl = document.getElementById('nav-'+id);
+  if(navEl) navEl.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  // re-trigger reveals on new page
+  setTimeout(()=>{
+    document.querySelectorAll('#page-'+id+' .reveal').forEach(el=>{
+      el.classList.remove('visible');
+      void el.offsetWidth;
+    });
+    revealAll();
+  }, 100);
+}
+
+// ── SCROLL REVEAL ──
+function revealAll(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el));
+}
+revealAll();
+</script>
+</body>
+</html>
